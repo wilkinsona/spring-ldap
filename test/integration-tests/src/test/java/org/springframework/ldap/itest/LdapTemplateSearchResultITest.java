@@ -15,6 +15,18 @@
  */
 package org.springframework.ldap.itest;
 
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.fail;
+import static org.springframework.ldap.query.LdapQueryBuilder.query;
+
+import java.util.List;
+
+import javax.naming.Name;
+import javax.naming.NamingException;
+import javax.naming.directory.SearchControls;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,18 +44,8 @@ import org.springframework.ldap.query.SearchScope;
 import org.springframework.ldap.support.LdapUtils;
 import org.springframework.ldap.test.AttributeCheckAttributesMapper;
 import org.springframework.ldap.test.AttributeCheckContextMapper;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-
-import javax.naming.Name;
-import javax.naming.NamingException;
-import javax.naming.directory.SearchControls;
-import java.util.List;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.Assert.fail;
-import static org.springframework.ldap.query.LdapQueryBuilder.query;
 
 /**
  * Tests for LdapTemplate's search methods. This test class tests all the
@@ -382,6 +384,7 @@ public class LdapTemplateSearchResultITest extends AbstractLdapTemplateIntegrati
 	}
 
 	@Test
+	@DirtiesContext
 	public void testSearchWithInvalidSearchBaseCanBeConfiguredToSwallowException() {
 		tested.setIgnoreNameNotFoundException(true);
 		contextMapper.setExpectedAttributes(CN_SN_ATTRS);

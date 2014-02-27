@@ -18,7 +18,7 @@ package org.springframework.ldap.transaction.compensating.manager;
 
 import org.springframework.ldap.core.ContextSource;
 import org.springframework.ldap.transaction.compensating.TempEntryRenamingStrategy;
-import org.springframework.orm.hibernate3.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.TransactionSuspensionNotSupportedException;

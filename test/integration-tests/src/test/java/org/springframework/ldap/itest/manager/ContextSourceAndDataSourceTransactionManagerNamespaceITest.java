@@ -73,7 +73,7 @@ public class ContextSourceAndDataSourceTransactionManagerNamespaceITest extends 
 		}
 
 		jdbcTemplate.execute("drop table PERSON if exists");
-		jdbcTemplate.execute("create table PERSON(fullname VARCHAR, lastname VARCHAR, description VARCHAR)");
+		jdbcTemplate.execute("create table PERSON(fullname VARCHAR(64), lastname VARCHAR(64), description VARCHAR(64))");
 		jdbcTemplate.update("insert into PERSON values(?, ?, ?)", new Object[] { "Some Person", "Person",
 				"Sweden, Company1, Some Person" });
 	}
